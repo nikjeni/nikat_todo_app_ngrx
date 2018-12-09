@@ -11,19 +11,20 @@ import { TodoDataService } from './todo-data.service';
 export class AppComponent {
   newTodo: Todo = new Todo();
 
-  constructor(private todoDataService: TodoDataService) {}
+  constructor(private todoDataService: TodoDataService) { }
 
   public addTodo(): void {
+    console.log('app add')
     this.todoDataService.addTodo(this.newTodo);
-    this.newTodo = new Todo();
+    // this.newTodo = new Todo();
   }
 
-  public toggleTodoComplete(todo): void {
-    this.todoDataService.toggleTodoComplete(todo);
+  public toggleTodoComplete({ id }): void {
+    this.todoDataService.toggleTodoComplete(id);
   }
 
-  public removeTodo(todo): void {
-    this.todoDataService.deleteTodoById(todo.id);
+  public removeTodo({ id }): void {
+    this.todoDataService.deleteTodoById(id);
   }
 
   public allTodos(): number {
